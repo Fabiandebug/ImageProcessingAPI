@@ -1,0 +1,31 @@
+{
+  "name": "imageprocessingapi",
+  "version": "1.0.0",
+  "description": "Udacity Image processing API project",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "jasmine": "jasmine",
+    "test": "npm run build && npm run jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fabiandebug/ImageProcessingAPI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fabiandebug/ImageProcessingAPI/issues"
+  },
+  "homepage": "https://github.com/Fabiandebug/ImageProcessingAPI#readme",
+  "dependencies": {
+    "jasmine": "^3.6.4",
+    "jasmine-spec-reporter": "^7.0.0",
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^3.6.4",
+    "@types/typescript": "^2.0.0",
+    "ts-node": "^10.9.1"
+  }
+}
