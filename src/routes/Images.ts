@@ -16,11 +16,6 @@ imageResizer.get(
     const height = req.query.height;
 
     //url query parameters
-    // const fname: string = filename as unknown as string;
-    // const w: number = parseInt(width as string);
-    // const h: number = parseInt(height as string);
-
-
     const fname = typeof filename === 'string' ? filename : '';
     const w = typeof width === 'string' ? parseInt(width, 0) : 0;
     const h = typeof height === 'string' ? parseInt(height, 0) : 0;
