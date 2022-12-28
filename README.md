@@ -42,16 +42,30 @@ This is a list of the dependencies and scripts that were used to power this node
 
 -- Dependencies and type definitions were also added:
     
-    - TypeScript
-    - Nodemon
-    - SuperTest and Jasmine
-    - Express
-    - Prettier
-    - Lint
-    - Sharp
-    - FileSystem
-    - Path
-
+  "dependencies": {
+    "express": "^4.18.2",
+    "sharp": "^0.31.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.15",
+    "@types/jasmine": "^3.10.7",
+    "@types/sharp": "^0.31.0",
+    "@types/supertest": "^2.0.12",
+    "@types/typescript": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.47.1",
+    "@typescript-eslint/parser": "^5.47.1",
+    "eslint": "^8.30.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "fs-extra": "^11.1.0",
+    "jasmine": "^4.5.0",
+    "jasmine-spec-reporter": "^7.0.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.1",
+    "supertest": "^6.3.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
 
 ### END ###
 

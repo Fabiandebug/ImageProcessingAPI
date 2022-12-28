@@ -45,7 +45,7 @@ var path_1 = __importDefault(require("path"));
 var fs_1 = __importDefault(require("fs"));
 var imageResizer = express_1.default.Router();
 imageResizer.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var filename, width, height, fname, w, h, inPath, outPath;
+    var filename, width, height, fname, w, h, inPath, outPath, error, error, error;
     return __generator(this, function (_a) {
         filename = req.query.filename;
         width = req.query.width;
@@ -53,15 +53,18 @@ imageResizer.get('/', function (req, res) { return __awaiter(void 0, void 0, voi
         fname = typeof filename === 'string' ? filename : '';
         w = typeof width === 'string' ? parseInt(width, 0) : 0;
         h = typeof height === 'string' ? parseInt(height, 0) : 0;
-        inPath = path_1.default.join(__dirname, '..', '..', 'images', fname + '.jpg');
-        outPath = path_1.default.join(__dirname, '..', '..', 'images', 'resizedimg', fname + w + 'x' + h + '.jpg');
+        inPath = path_1.default.join(__dirname, '..', '..', 'src', 'images', fname + '.jpg');
+        outPath = path_1.default.join(__dirname, '..', '..', 'src', 'images', 'resizedimg', fname + w + 'x' + h + '.jpg');
         if (filename != null) {
             //filename is entered in query string.
             if (!fs_1.default.existsSync(inPath)) {
-                //check if that file exists or not,if the file doesn't exist, return file not found.
+                error = {
+                    message: 'File not found: ' + inPath + '. Please enter a valid image name.'
+                };
                 res
                     .status(404)
-                    .send('File not found,Enter correct image name');
+                    .send(error);
+                console.log(inPath);
             }
             //file exists
             else {
@@ -78,21 +81,24 @@ imageResizer.get('/', function (req, res) { return __awaiter(void 0, void 0, voi
                             //both width and height are entered
                             //if width and height are not numbers, raise error
                             if (isNaN(w) || isNaN(h)) {
-                                res.status(400).send({
-                                    error: 'Invalid width or height',
-                                    message: 'Please enter a number for the width and height'
-                                });
+                                error = {
+                                    message: 'Please enter a number for the width and height, example:height=300,width=500',
+                                    error: 'Invalid width or height'
+                                };
+                                res
+                                    .status(400)
+                                    .send(error);
                             }
                             else {
                                 //resize the image and return the result.
                                 try {
                                     (0, resizer_1.default)(fname, w, h).then(function () {
                                         res.status(200).sendFile(outPath);
+                                        console.log(fname);
                                     });
                                 }
                                 catch (error) {
-                                    console.error(error);
-                                    res.status(500).send("Failed to resize image");
+                                    res.status(500).send("Failed to resize image,".concat('+').concat(error));
                                 }
                             }
                         }
@@ -106,8 +112,13 @@ imageResizer.get('/', function (req, res) { return __awaiter(void 0, void 0, voi
             }
         }
         else {
-            //Check if image name has been provided.
-            res.status(400).send('Please provide the image name');
+            error = {
+                message: 'Please provide the image name',
+                error: 'Image/Filename cannot be blank'
+            };
+            res
+                .status(400)
+                .send(error);
         }
         return [2 /*return*/];
     });

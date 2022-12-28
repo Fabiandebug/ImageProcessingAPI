@@ -6,10 +6,8 @@ import imageResizer from './routes/Images';
 const app = express();
 const port = 3000;
 
-
-
 //Routes.
-app.use('/', mainRender)
+app.use('/', mainRender);
 app.use('/images', imageResizer);
 
 app.listen(port, () => {

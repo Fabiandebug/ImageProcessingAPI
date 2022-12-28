@@ -49,8 +49,8 @@ var resizeImage = function (filename, width, height) { return __awaiter(void 0, 
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                inPath = path_1.default.join(__dirname, '..', '..', 'images', filename + '.jpg');
-                outPath = path_1.default.join(__dirname, '..', '..', 'images', 'resizedimg');
+                inPath = path_1.default.join(__dirname, '..', '..', 'src', 'images', filename + '.jpg');
+                outPath = path_1.default.join(__dirname, '..', '..', 'src', 'images', 'resizedimg');
                 //Check if directory exists, and make it if it doesn't.
                 if (!fs_1.default.existsSync(outPath)) {
                     fs_1.default.mkdirSync(outPath);

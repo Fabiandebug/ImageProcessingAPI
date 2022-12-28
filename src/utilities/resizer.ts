@@ -9,11 +9,12 @@ const resizeImage = async (
   width: number,
   height: number
 ): Promise<string> => {
-  //Get pathes for input and out 
+  //Get pathes for input and out
   const inPath: fs.PathLike = path.join(
     __dirname,
     '..',
     '..',
+    'src',
     'images',
     filename + '.jpg'
   );
@@ -21,6 +22,7 @@ const resizeImage = async (
     __dirname,
     '..',
     '..',
+    'src',
     'images',
     'resizedimg'
   );
