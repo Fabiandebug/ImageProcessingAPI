@@ -59,11 +59,9 @@ imageResizer.get('/', function (req, res) { return __awaiter(void 0, void 0, voi
             //filename is entered in query string.
             if (!fs_1.default.existsSync(inPath)) {
                 error = {
-                    message: 'File not found: ' + inPath + '. Please enter a valid image name.'
+                    message: 'File not found: ' + inPath + '. Please enter a valid image name.',
                 };
-                res
-                    .status(404)
-                    .send(error);
+                res.status(404).send(error);
                 console.log(inPath);
             }
             //file exists
@@ -76,18 +74,16 @@ imageResizer.get('/', function (req, res) { return __awaiter(void 0, void 0, voi
                 else {
                     //first check if a resized image is stored, if not then resize it .
                     if (!fs_1.default.existsSync(outPath)) {
-                        //if a resized image doesn't exist, resize a new image using sharp and save 
+                        //if a resized image doesn't exist, resize a new image using sharp and save
                         if (width != null && height != null) {
                             //both width and height are entered
                             //if width and height are not numbers, raise error
-                            if (isNaN(w) || isNaN(h)) {
+                            if (isNaN(w) || isNaN(h) || w <= 0 || h <= 0) {
                                 error = {
-                                    message: 'Please enter a number for the width and height, example:height=300,width=500',
-                                    error: 'Invalid width or height'
+                                    message: 'Please enter a number for the width and height and greater than 0, example:height=300,width=500',
+                                    error: 'Invalid width or height',
                                 };
-                                res
-                                    .status(400)
-                                    .send(error);
+                                res.status(400).send(error);
                             }
                             else {
                                 //resize the image and return the result.
@@ -114,11 +110,9 @@ imageResizer.get('/', function (req, res) { return __awaiter(void 0, void 0, voi
         else {
             error = {
                 message: 'Please provide the image name',
-                error: 'Image/Filename cannot be blank'
+                error: 'Image/Filename cannot be blank',
             };
-            res
-                .status(400)
-                .send(error);
+            res.status(400).send(error);
         }
         return [2 /*return*/];
     });

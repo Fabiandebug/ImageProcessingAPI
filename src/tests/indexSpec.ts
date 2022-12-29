@@ -25,17 +25,4 @@ describe('Image Processing API test', () => {
     );
     expect(res.status).toEqual(404);
   });
-
-  describe('Image Resizer function', () => {
-    it('should not throw an error when called', async () => {
-      const testFilePath = 'santamonica';
-      const testWidth = 200;
-      const testHeight = 500;
-
-      const res = await req.get(
-        `/images?filename=${testFilePath}&width=${testWidth}&height=${testHeight}`
-      );
-      expect(res.status).toBe(200);
-    });
-  });
 });

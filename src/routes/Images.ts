@@ -45,7 +45,7 @@ imageResizer.get('/', async (req: Request, res: Response): Promise<void> => {
           'File not found: ' + inPath + '. Please enter a valid image name.',
       };
       res.status(404).send(error);
-      console.log(inPath);
+
     }
 
     //file exists
@@ -62,10 +62,10 @@ imageResizer.get('/', async (req: Request, res: Response): Promise<void> => {
             //both width and height are entered
 
             //if width and height are not numbers, raise error
-            if (isNaN(w) || isNaN(h)) {
+            if (isNaN(w) || isNaN(h) || w <= 0 || h <= 0) {
               const error = {
                 message:
-                  'Please enter a number for the width and height, example:height=300,width=500',
+                  'Please enter a number for the width and height and greater than 0, example:height=300,width=500',
                 error: 'Invalid width or height',
               };
               res.status(400).send(error);

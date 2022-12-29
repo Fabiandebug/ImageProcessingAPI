@@ -91,22 +91,4 @@ describe('Image Processing API test', function () {
             }
         });
     }); });
-    describe('Image Resizer function', function () {
-        it('should not throw an error when called', function () { return __awaiter(void 0, void 0, void 0, function () {
-            var testFilePath, testWidth, testHeight, res;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        testFilePath = 'santamonica';
-                        testWidth = 200;
-                        testHeight = 500;
-                        return [4 /*yield*/, req.get("/images?filename=".concat(testFilePath, "&width=").concat(testWidth, "&height=").concat(testHeight))];
-                    case 1:
-                        res = _a.sent();
-                        expect(res.status).toBe(200);
-                        return [2 /*return*/];
-                }
-            });
-        }); });
-    });
 });
